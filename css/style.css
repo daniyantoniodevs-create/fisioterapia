@@ -558,7 +558,8 @@ ul { list-style: none; }
   .pricing { grid-template-columns: 1fr; max-width: 460px; }
 }
 @media (max-width: 760px) {
-  .section { padding: 70px 0; }
+  .section { padding: 64px 0; }
+  .hero { padding: 130px 0 78px; }
   .menu { display: none; }
   .burger { display: flex; }
   .nav-cta { padding: 10px 16px; font-size: .86rem; }
@@ -571,13 +572,38 @@ ul { list-style: none; }
   }
   .menu.mobile-open a { color: var(--navy); padding: 13px 16px; }
   .cards, .quotes, .footer-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 24px; }
-  .hero-chip--1 { left: 4px; }
-  .hero-chip--2 { right: 4px; }
+  .hero-stats { gap: 22px 32px; }
+  .hero-chip { font-size: .8rem; padding: 9px 12px; }
+  .hero-chip i { width: 28px; height: 28px; }
+  .hero-chip--1 { left: 0; }
+  .hero-chip--2 { right: 0; }
+  .contact-form { padding: 24px; }
+  .about-exp { right: 0; padding: 14px 18px; }
+  .about-exp strong { font-size: 1.6rem; }
 }
 @media (max-width: 480px) {
-  .statband { grid-template-columns: 1fr 1fr; }
-  .portal-promo { padding: 32px 22px; }
+  .container { padding: 0 18px; }
+  .hero { padding: 116px 0 60px; }
+  .hero h1 { font-size: 2rem; }
+  .hero p.lead { font-size: 1rem; }
+  .hero-actions .btn { width: 100%; }
+  .hero-stats { width: 100%; justify-content: space-between; gap: 16px; }
+  .hero-stats .stat strong { font-size: 1.6rem; }
+  .statband { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .portal-promo { padding: 30px 20px; }
+  .trust-inner { gap: 16px; }
+  .trust-item { font-size: .9rem; }
+  .eyebrow { font-size: .76rem; }
+  .card, .quote { padding: 26px 22px; }
+  .price-card { padding: 30px 24px; }
+  .case-card { padding: 26px 18px; }
+  .case-stats { gap: 18px; }
+  .case-stats .cs strong { font-size: 1.4rem; }
+  .faq-q { font-size: .96rem; padding: 16px 18px; }
+}
+@media (max-width: 360px) {
+  .hero-chip { display: none; }
+  .hero-stats .stat strong { font-size: 1.4rem; }
 }
 
 /* reduce motion */

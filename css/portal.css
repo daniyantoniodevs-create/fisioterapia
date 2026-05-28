@@ -23,7 +23,9 @@
 body {
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink); background: var(--bg); line-height: 1.6;
+  overflow-x: hidden;
 }
+html { -webkit-text-size-adjust: 100%; }
 h1,h2,h3,h4 { font-family: 'Poppins', system-ui, sans-serif; color: var(--navy); }
 a { color: inherit; text-decoration: none; }
 img, svg { display: block; max-width: 100%; }
@@ -346,8 +348,23 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 560px) {
   .grid-4, .grid-3, .ex-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+  .form-row, .field-half { grid-template-columns: 1fr; }
   .login-main { padding: 28px 18px; }
   .login-aside { padding: 36px; }
   .ring-wrap { flex-direction: column; text-align: center; }
+  .topbar h1 { font-size: 1.4rem; }
+  .panel { padding: 20px; }
+  .modal-head, .modal-body { padding: 18px; }
+  .stat-card { padding: 18px; }
+  .stat-card .sc-val { font-size: 1.7rem; }
+}
+@media (max-width: 400px) {
+  .main { padding: 16px; }
+  .login-card h1, .wizard h1 { font-size: 1.45rem; }
+  .steps .step small { font-size: .68rem; }
+  .steps .dot { width: 30px; height: 30px; }
+  .steps .line { flex-basis: 14px; }
+  .role-tabs button { font-size: .84rem; padding: 11px 6px; }
+  .btn { padding: 13px 18px; font-size: .92rem; }
+  .topbar-actions { width: 100%; }
 }
