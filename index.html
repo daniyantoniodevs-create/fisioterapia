@@ -268,8 +268,64 @@
           </div>
         </div>
       </div>
-      <div class="acl-visual reveal" data-delay="1">
-        <img src="img/knee.svg" alt="Anatomía de la rodilla y ligamento cruzado anterior" />
+      <div class="acl-visual knee-wrap reveal" data-delay="1">
+        <div class="knee3d" id="knee3d">
+          <div class="knee3d-perspective">
+            <div class="knee3d-stage" id="kneeStage" role="img" aria-label="Modelo 3D interactivo de la rodilla">
+
+              <!-- Capa huesos (fondo) -->
+              <div class="knee-layer depth-back">
+                <svg viewBox="0 0 280 340">
+                  <g data-part="tibia">
+                    <rect x="112" y="206" width="56" height="128" rx="22" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                    <ellipse cx="140" cy="208" rx="54" ry="16" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                  </g>
+                  <g data-part="femur">
+                    <rect x="110" y="18" width="60" height="148" rx="26" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                    <circle cx="122" cy="166" r="30" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                    <circle cx="158" cy="166" r="30" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                  </g>
+                  <ellipse data-part="patella" cx="80" cy="186" rx="20" ry="28" fill="#fff" stroke="#cbd5e1" stroke-width="2.5"/>
+                </svg>
+              </div>
+
+              <!-- Capa menisco -->
+              <div class="knee-layer depth-mid">
+                <svg viewBox="0 0 280 340">
+                  <ellipse data-part="menisco" cx="140" cy="192" rx="58" ry="12" fill="#7dd3fc"/>
+                </svg>
+              </div>
+
+              <!-- Capa ligamentos (frente) -->
+              <div class="knee-layer depth-front">
+                <svg viewBox="0 0 280 340">
+                  <path data-part="lcp" d="M124 166 L160 212" fill="none" stroke="#14b8a6" stroke-width="11" stroke-linecap="round"/>
+                  <path data-part="lca" d="M160 166 L124 212" fill="none" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+                </svg>
+              </div>
+
+            </div>
+          </div>
+
+          <p class="knee-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg>
+            Arrastra para girar · pulsa cada parte para explorarla
+          </p>
+
+          <div class="knee-legend" id="kneeLegend">
+            <button data-part="lca"><span class="dot" style="background:#f97316"></span>LCA</button>
+            <button data-part="lcp"><span class="dot" style="background:#14b8a6"></span>LCP</button>
+            <button data-part="menisco"><span class="dot" style="background:#7dd3fc"></span>Menisco</button>
+            <button data-part="femur"><span class="dot" style="background:#e2e8f0"></span>Fémur</button>
+            <button data-part="tibia"><span class="dot" style="background:#e2e8f0"></span>Tibia</button>
+            <button data-part="patella"><span class="dot" style="background:#e2e8f0"></span>Rótula</button>
+          </div>
+
+          <div class="knee-info">
+            <h4 id="kneeInfoTitle">Ligamento cruzado anterior (LCA)</h4>
+            <p id="kneeInfoText">Evita el desplazamiento hacia delante de la tibia y da estabilidad rotacional. Es el ligamento que más se lesiona en deportes de giro, salto y frenada.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -666,6 +722,7 @@
   </a>
 
   <script src="js/shader.js"></script>
+  <script src="js/knee3d.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
