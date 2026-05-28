@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 520" role="img" aria-label="Álvaro Picazo, fisioterapeuta">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <clipPath id="pc"><rect x="40" y="40" width="400" height="440" rx="32"/></clipPath>
+  </defs>
+  <rect x="40" y="40" width="400" height="440" rx="32" fill="url(#pbg)"/>
+  <g clip-path="url(#pc)">
+    <!-- body -->
+    <rect x="120" y="330" width="240" height="160" rx="40" fill="#f1f5f9"/>
+    <path d="M150 490 v-110 a90 90 0 0 1 180 0 v110z" fill="#e2e8f0"/>
+    <!-- polo collar -->
+    <path d="M205 350 l35 40 l35-40 l40 20 v120 h-190 v-120z" fill="#0f2a43"/>
+    <path d="M240 360 l-22 26 l22 18 l22-18z" fill="#f1f5f9"/>
+    <!-- neck -->
+    <rect x="218" y="300" width="44" height="60" rx="20" fill="#f4c9a8"/>
+    <!-- head -->
+    <circle cx="240" cy="240" r="74" fill="#f6d2b3"/>
+    <!-- hair -->
+    <path d="M168 232 a72 72 0 0 1 144 0 c0-44-32-74-72-74s-72 30-72 74z" fill="#3b2a1c"/>
+    <path d="M170 236 c8-30 30-52 70-52 38 0 62 22 70 52 4-8-2-26-12-38-12-14-32-24-58-24s-46 10-58 24c-10 12-16 30-12 38z" fill="#2a1d12"/>
+    <!-- face -->
+    <circle cx="216" cy="238" r="6" fill="#2a1d12"/>
+    <circle cx="266" cy="238" r="6" fill="#2a1d12"/>
+    <path d="M224 270 q16 14 32 0" fill="none" stroke="#b9784f" stroke-width="4" stroke-linecap="round"/>
+    <path d="M205 224 q11 -8 22 -2 M255 222 q11 -6 22 2" fill="none" stroke="#3b2a1c" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- badge -->
+  <g transform="translate(300 380)">
+    <circle r="46" fill="#fff"/>
+    <circle r="46" fill="none" stroke="#14b8a6" stroke-width="3"/>
+    <text y="-6" text-anchor="middle" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#0f2a43">Col.</text>
+    <text y="14" text-anchor="middle" font-family="Poppins, Arial" font-size="13" font-weight="700" fill="#14b8a6">CLM-2018</text>
+  </g>
+</svg>

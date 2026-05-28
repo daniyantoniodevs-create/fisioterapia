@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /portal.html
+Disallow: /paciente.html
+Disallow: /admin.html
+
+Sitemap: https://alvaropicazofisioterapia.es/sitemap.xml
