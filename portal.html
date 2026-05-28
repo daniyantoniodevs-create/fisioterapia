@@ -88,9 +88,16 @@
         </form>
 
         <div class="demo-hint">
-          <strong>🔐 Accesos de demostración</strong><br/>
-          Paciente → usuario <code>cliente</code> · contraseña <code>123465</code><br/>
-          Fisioterapeuta → usuario <code>fisio</code> · contraseña <code>123456</code>
+          <strong>🔐 Accesos de demostración</strong>
+          <span style="display:block;margin-top:4px;">Pulsa para rellenar automáticamente:</span>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+            <button type="button" class="demo-fill" data-user="cliente" data-pass="123465">
+              👤 Paciente · <code>cliente</code> / <code>123465</code>
+            </button>
+            <button type="button" class="demo-fill" data-user="fisio" data-pass="123456">
+              🩺 Fisioterapeuta · <code>fisio</code> / <code>123456</code>
+            </button>
+          </div>
         </div>
       </div>
     </main>

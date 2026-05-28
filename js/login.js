@@ -59,6 +59,20 @@
     }, 350);
   });
 
+  // Accesos de demostración: rellenar al pulsar
+  document.querySelectorAll('.demo-fill').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var u = btn.getAttribute('data-user');
+      userIn.value = u;
+      passIn.value = btn.getAttribute('data-pass');
+      errorBox.classList.remove('show');
+      // marcar la pestaña de rol correspondiente
+      tabs.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-role') === (u === 'fisio' ? 'fisio' : 'cliente'));
+      });
+    });
+  });
+
   // Prefijar usuario por defecto
   userIn.value = 'cliente';
 })();
