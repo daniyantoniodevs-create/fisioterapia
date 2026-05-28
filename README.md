@@ -33,14 +33,29 @@ Pulsa **"Portal del paciente"** en el menú o ve a `portal.html`:
   registro de dolor/movilidad y chat con el fisio.
 - **Fisioterapeuta (admin):** panel con pacientes, KPIs y **subida de vídeos**
   (YouTube, archivo local o enlace directo). Los vídeos publicados aparecen
-  automáticamente en el portal del paciente.
+  automáticamente en el portal del paciente. Chat por paciente.
+
+### Registro y suscripción (nuevo)
+
+Cualquier visitante puede **crear su cuenta** desde `register.html` (botón
+"Suscribirme al portal"):
+
+1. **Datos** de acceso (nombre, email, contraseña).
+2. **Tu lesión**: motivo, qué quiere mejorar y dudas/notas para el fisio.
+3. **Pago simulado** del **Plan Recuperación — 150€/mes** (no se cobra nada real;
+   usa una tarjeta de prueba, p. ej. `4242 4242 4242 4242`).
+
+Tras el pago la cuenta se activa, el paciente accede a su portal y **aparece
+automáticamente en el panel del fisioterapeuta**. Si intenta iniciar sesión sin
+haber completado el pago, se le redirige a finalizar la suscripción.
 
 ## 📁 Estructura
 
 ```
 .
-├── index.html          # Web principal (landing)
+├── index.html          # Web principal (landing) con tarifas y FAQ
 ├── portal.html         # Login del portal
+├── register.html       # Registro + pago (150€/mes)
 ├── paciente.html       # Panel del paciente
 ├── admin.html          # Panel del fisioterapeuta
 ├── robots.txt          # SEO
@@ -53,6 +68,7 @@ Pulsa **"Portal del paciente"** en el menú o ve a `portal.html`:
 │   ├── portal-data.js  # Datos, login y almacenamiento (localStorage)
 │   ├── portal-ui.js    # Utilidades de interfaz del portal
 │   ├── login.js        # Lógica del login
+│   ├── register.js     # Registro + pago simulado
 │   ├── paciente.js     # Lógica del panel del paciente
 │   └── admin.js        # Lógica del panel del fisioterapeuta
 └── img/                # Logos, ilustraciones e iconos (SVG)

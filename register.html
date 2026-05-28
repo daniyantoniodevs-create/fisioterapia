@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear cuenta | Portal del Paciente · Álvaro Picazo</title>
+  <meta name="description" content="Regístrate en el portal del paciente de Álvaro Picazo. Sigue tu rehabilitación con ejercicios en vídeo y contacto directo con tu fisio." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <meta name="theme-color" content="#0f2a43" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/portal.css" />
+</head>
+<body>
+  <div class="login-wrap">
+    <!-- Aside -->
+    <aside class="login-aside">
+      <div class="la-top">
+        <a href="index.html" class="brand"><img src="img/logo-light.svg" alt="Álvaro Picazo Fisioterapia" /></a>
+      </div>
+      <div class="la-mid">
+        <h2>Empieza tu<br/>recuperación hoy</h2>
+        <p>Únete al portal y accede a tu plan de ejercicios personalizado, seguimiento de tu progreso y contacto directo con tu fisioterapeuta.</p>
+        <ul class="la-features">
+          <li><div class="lf-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><strong>Ejercicios en vídeo</strong><span>Tu plan personalizado paso a paso</span></div></li>
+          <li><div class="lf-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><strong>Contacto con tu fisio</strong><span>Resuelve dudas cuando quieras</span></div></li>
+          <li><div class="lf-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><strong>Seguimiento real</strong><span>Visualiza tu evolución por fases</span></div></li>
+        </ul>
+      </div>
+      <div class="la-bottom">© <span class="yr"></span> Álvaro Picazo Fisioterapia · Albacete</div>
+    </aside>
+
+    <!-- Wizard -->
+    <main class="login-main">
+      <div class="wizard">
+        <a href="portal.html" class="back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Ya tengo cuenta
+        </a>
+
+        <div class="steps" id="steps">
+          <div class="step active" data-step="1"><div class="dot">1</div><small>Tus datos</small></div>
+          <div class="line"></div>
+          <div class="step" data-step="2"><div class="dot">2</div><small>Tu lesión</small></div>
+          <div class="line"></div>
+          <div class="step" data-step="3"><div class="dot">3</div><small>Pago</small></div>
+        </div>
+
+        <div class="login-error" id="regError">Revisa los datos.</div>
+
+        <!-- Paso 1: Datos -->
+        <section class="wstep active" id="wstep-1">
+          <h1 style="font-size:1.6rem;margin-bottom:6px;">Crea tu cuenta</h1>
+          <p class="sub" style="color:var(--muted);margin-bottom:22px;">Empecemos por tus datos de acceso.</p>
+          <div class="frm">
+            <label>Nombre completo</label>
+            <input type="text" id="rName" placeholder="Tu nombre y apellidos" />
+            <label>Email</label>
+            <input type="email" id="rEmail" placeholder="tucorreo@email.com" />
+            <div class="field-half">
+              <div><label>Contraseña</label><input type="password" id="rPass" placeholder="Mínimo 4 caracteres" /></div>
+              <div><label>Repetir</label><input type="password" id="rPass2" placeholder="Repite la contraseña" /></div>
+            </div>
+          </div>
+          <div class="wbtns">
+            <button class="btn btn--primary btn--block" data-next="2">Continuar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </section>
+
+        <!-- Paso 2: Lesión -->
+        <section class="wstep" id="wstep-2">
+          <h1 style="font-size:1.6rem;margin-bottom:6px;">Cuéntanos tu caso</h1>
+          <p class="sub" style="color:var(--muted);margin-bottom:22px;">Esto ayuda a Álvaro a preparar tu plan.</p>
+          <div class="frm">
+            <label>¿Cuál es tu lesión o motivo?</label>
+            <select id="rInjury">
+              <option value="">Selecciona...</option>
+              <option>Rotura de ligamento cruzado (LCA)</option>
+              <option>Lesión de menisco</option>
+              <option>Esguince / lesión de tobillo</option>
+              <option>Lesión muscular</option>
+              <option>Dolor de espalda / lumbar</option>
+              <option>Hombro</option>
+              <option>Postoperatorio</option>
+              <option>Otra</option>
+            </select>
+            <label>¿Qué te gustaría mejorar o conseguir?</label>
+            <input type="text" id="rGoal" placeholder="Ej. volver a correr, jugar sin dolor..." />
+            <label>Dudas o notas para tu fisio (opcional)</label>
+            <textarea id="rNotes" placeholder="Cuéntale a Álvaro cualquier cosa relevante: cuándo te lesionaste, si te operaron, qué deporte practicas..."></textarea>
+          </div>
+          <div class="wbtns">
+            <button class="btn btn--light" data-prev="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Atrás</button>
+            <button class="btn btn--primary" style="flex:1;" data-next="3">Ir al pago <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </section>
+
+        <!-- Paso 3: Pago -->
+        <section class="wstep" id="wstep-3">
+          <h1 style="font-size:1.6rem;margin-bottom:6px;">Activa tu portal</h1>
+          <p class="sub" style="color:var(--muted);margin-bottom:22px;">Suscripción mensual, cancela cuando quieras.</p>
+
+          <div class="plan-box">
+            <div class="pb-top">
+              <h4 id="planName">Plan Recuperación</h4>
+              <div class="price"><span id="planPrice">150</span>€ <small>/mes</small></div>
+            </div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Plan de ejercicios en vídeo personalizado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Seguimiento de tu progreso por fases</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Chat directo con tu fisioterapeuta</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Registro de dolor y movilidad</li>
+            </ul>
+          </div>
+
+          <div class="card-visual">
+            <div class="cv-chip"></div>
+            <div class="cv-num" id="cvNum">•••• •••• •••• ••••</div>
+            <div class="cv-row"><span id="cvName">NOMBRE APELLIDOS</span><span id="cvExp">MM/AA</span></div>
+          </div>
+
+          <div class="frm">
+            <label>Número de tarjeta</label>
+            <input type="text" id="cardNum" inputmode="numeric" maxlength="19" placeholder="4242 4242 4242 4242" />
+            <div class="field-half">
+              <div><label>Caducidad</label><input type="text" id="cardExp" maxlength="5" placeholder="MM/AA" /></div>
+              <div><label>CVC</label><input type="text" id="cardCvc" inputmode="numeric" maxlength="4" placeholder="123" /></div>
+            </div>
+          </div>
+          <div class="demo-hint" style="margin-top:0;">🔒 Pago de demostración — no se realiza ningún cobro real. Usa cualquier número, p. ej. <code>4242 4242 4242 4242</code>.</div>
+
+          <div class="wbtns">
+            <button class="btn btn--light" data-prev="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Atrás</button>
+            <button class="btn btn--primary" style="flex:1;" id="payBtn">Pagar 150€ y activar</button>
+          </div>
+        </section>
+
+        <!-- Paso 4: Éxito -->
+        <section class="wstep" id="wstep-4">
+          <div class="pay-success">
+            <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <h2>¡Cuenta activada!</h2>
+            <p>Tu suscripción al <strong>Plan Recuperación</strong> está activa.</p>
+            <p>Álvaro revisará tu caso y preparará tu plan de ejercicios.</p>
+            <button class="btn btn--primary btn--block" id="goPortal" style="margin-top:22px;">Entrar a mi portal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </section>
+
+        <p class="muted-link" id="loginLink">¿Ya tienes cuenta? <a href="portal.html">Inicia sesión</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/portal-data.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

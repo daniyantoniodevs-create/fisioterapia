@@ -27,13 +27,15 @@
 
   /* ---------- Resumen / KPIs ---------- */
   document.getElementById('injuryInfo').innerHTML =
-    '<strong>' + P.injury + '</strong> — Intervención: ' + formatDate(P.surgeryDate) +
-    '. Actualmente en <strong>fase ' + P.currentPhase + '</strong> de tu recuperación.';
+    '<strong>' + P.injury + '</strong>' +
+    (P.surgeryDate ? ' — Intervención: ' + formatDate(P.surgeryDate) : '') +
+    '. Actualmente en <strong>fase ' + P.currentPhase + '</strong> de tu recuperación.' +
+    (P.goal ? ' Objetivo: <em>' + P.goal + '</em>.' : '');
 
   animateNum(document.getElementById('kpiOverall'), P.overall, '%');
   animateNum(document.getElementById('kpiRom'), P.rangeOfMotion, '°');
   animateNum(document.getElementById('kpiStrength'), P.strength, '%');
-  document.getElementById('kpiNext').textContent = formatDateTime(P.nextSession);
+  document.getElementById('kpiNext').textContent = /^\d{4}-\d{2}-\d{2}/.test(P.nextSession || '') ? formatDateTime(P.nextSession) : (P.nextSession || 'Por agendar');
 
   // Anillo de progreso
   var ring = document.getElementById('ringFg');
@@ -97,9 +99,13 @@
   /* ---------- Progreso: gráfico de dolor ---------- */
   var painChart = document.getElementById('painChart');
   var weeks = P.weeklyPain || [];
+  if (weeks.length === 0) {
+    painChart.innerHTML = '<div class="empty" style="margin:auto;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><p>Registra tu primera sesión para ver tu evolución.</p></div>';
+  } else {
   painChart.innerHTML = weeks.map(function (val, i) {
     return '<div class="col"><div class="b" data-v="' + val + '" style="height:0"></div><small>Sem ' + (i + 1) + '</small></div>';
   }).join('');
+  }
   setTimeout(function () {
     painChart.querySelectorAll('.b').forEach(function (b) {
       var v = parseInt(b.getAttribute('data-v'), 10);
@@ -115,6 +121,10 @@
   // tabla de sesiones
   function renderSessions() {
     var tb = document.querySelector('#sessionsTable tbody');
+    if (!P.sessions || P.sessions.length === 0) {
+      tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:28px;">Aún no has registrado ninguna sesión. ¡Empieza hoy!</td></tr>';
+      return;
+    }
     tb.innerHTML = P.sessions.map(function (s) {
       return '<tr><td>' + formatDate(s.date) + '</td>' +
              '<td><span class="pill ' + (s.pain <= 2 ? 'ok' : s.pain <= 4 ? 'info' : 'warn') + '">' + s.pain + '/10</span></td>' +

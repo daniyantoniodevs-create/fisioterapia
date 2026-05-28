@@ -110,6 +110,48 @@
     });
   }
 
+  /* ---- Partículas flotantes en el hero ---- */
+  var particles = document.getElementById('heroParticles');
+  if (particles && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < 14; i++) {
+      var p = document.createElement('i');
+      var size = 4 + Math.random() * 8;
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width = p.style.height = size + 'px';
+      p.style.opacity = 0.2 + Math.random() * 0.5;
+      p.style.animationDuration = (10 + Math.random() * 14) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      particles.appendChild(p);
+    }
+  }
+
+  /* ---- Marquee infinito (duplicar contenido) ---- */
+  var marquee = document.getElementById('marquee');
+  if (marquee) marquee.innerHTML += marquee.innerHTML;
+
+  /* ---- Efecto 3D tilt + spotlight en tarjetas ---- */
+  if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.tilt').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width;
+        var py = (e.clientY - r.top) / r.height;
+        el.style.transform = 'perspective(900px) rotateX(' + ((0.5 - py) * 7).toFixed(2) + 'deg) rotateY(' + ((px - 0.5) * 7).toFixed(2) + 'deg) translateY(-6px)';
+        el.style.setProperty('--mx', (px * 100) + '%');
+        el.style.setProperty('--my', (py * 100) + '%');
+      });
+      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
+    });
+    // spotlight en elementos no-tilt
+    document.querySelectorAll('.spotlight:not(.tilt)').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
+  }
+
   /* ---- Año dinámico en el footer ---- */
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();

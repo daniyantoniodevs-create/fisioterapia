@@ -181,23 +181,50 @@
     }
   });
 
-  /* ---------- Mensajes ---------- */
+  /* ---------- Mensajes (por paciente) ---------- */
   var chatBox = document.getElementById('chatBox');
+  var chatPatient = document.getElementById('chatPatient');
+  var currentChatKey = 'cliente';
+  var currentChatName = 'María García';
+
+  function fillPatientSelector() {
+    // pacientes con conversación: demo "cliente" + registrados con cuenta
+    var opts = [{ key: 'cliente', name: 'María García (demo)' }];
+    Portal.getPatients().forEach(function (p) {
+      if (p.registered) opts.push({ key: p.key, name: p.name });
+    });
+    chatPatient.innerHTML = opts.map(function (o) {
+      return '<option value="' + o.key + '" data-name="' + o.name + '">' + o.name + '</option>';
+    }).join('');
+  }
+  fillPatientSelector();
+
   function renderChat() {
-    chatBox.innerHTML = Portal.getMessages().map(function (m) {
+    var msgs = Portal.getMessages(currentChatKey);
+    if (msgs.length === 0) {
+      chatBox.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><p>Aún no hay mensajes con ' + currentChatName + '.</p></div>';
+      return;
+    }
+    chatBox.innerHTML = msgs.map(function (m) {
       var mine = m.from === 'fisio';
       return '<div style="align-self:' + (mine ? 'flex-end' : 'flex-start') + ';max-width:75%;">' +
              '<div style="background:' + (mine ? 'var(--grad)' : '#eef4f8') + ';color:' + (mine ? '#fff' : 'var(--navy)') + ';padding:11px 15px;border-radius:14px;' + (mine ? 'border-bottom-right-radius:4px;' : 'border-bottom-left-radius:4px;') + 'font-size:.92rem;">' + escapeHtml(m.text) + '</div>' +
-             '<div style="font-size:.72rem;color:var(--muted);margin-top:4px;text-align:' + (mine ? 'right' : 'left') + ';">' + (mine ? 'Tú (Álvaro)' : 'María') + ' · ' + m.date + '</div></div>';
+             '<div style="font-size:.72rem;color:var(--muted);margin-top:4px;text-align:' + (mine ? 'right' : 'left') + ';">' + (mine ? 'Tú (Álvaro)' : currentChatName.split(' ')[0]) + ' · ' + m.date + '</div></div>';
     }).join('');
     chatBox.scrollTop = chatBox.scrollHeight;
   }
+  chatPatient.addEventListener('change', function () {
+    currentChatKey = chatPatient.value;
+    currentChatName = chatPatient.options[chatPatient.selectedIndex].getAttribute('data-name');
+    renderChat();
+  });
   renderChat();
+
   function sendMsg() {
     var input = document.getElementById('chatInput');
     var text = input.value.trim();
     if (!text) return;
-    Portal.addMessage({ from: 'fisio', text: text, date: nowStamp() });
+    Portal.addMessage(currentChatKey, { from: 'fisio', text: text, date: nowStamp() });
     input.value = '';
     renderChat();
   }
@@ -210,6 +237,8 @@
       Portal.reset();
       renderVideos();
       renderDashboard();
+      currentChatKey = 'cliente'; currentChatName = 'María García';
+      fillPatientSelector();
       renderChat();
       UI.toast('Datos de demostración restaurados');
     }

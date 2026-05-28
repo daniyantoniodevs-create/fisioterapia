@@ -45,7 +45,15 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var session = Portal.login(userIn.value, passIn.value);
+    // cuenta registrada pero sin pago activo
+    if (session && session.error === 'unpaid') {
+      errorBox.textContent = 'Tu cuenta aún no está activada. Completa el pago para acceder.';
+      errorBox.classList.add('show');
+      setTimeout(function () { location.href = 'register.html'; }, 1800);
+      return;
+    }
     if (!session) {
+      errorBox.textContent = 'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
       errorBox.classList.add('show');
       passIn.select();
       return;

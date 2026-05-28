@@ -281,6 +281,49 @@ button { font-family: inherit; cursor: pointer; }
 .notice { background: #f0f9ff; border: 1px solid #bae6fd; color: #075985; border-radius: 12px; padding: 14px 16px; font-size: .88rem; margin-bottom: 20px; display: flex; gap: 10px; align-items: flex-start; }
 .notice svg { width: 20px; height: 20px; stroke: #0284c7; flex: none; margin-top: 1px; }
 
+/* ---------- Registro / Wizard ---------- */
+.wizard { width: 100%; max-width: 480px; }
+.steps { display: flex; align-items: center; gap: 6px; margin-bottom: 28px; }
+.steps .step { flex: 1; text-align: center; }
+.steps .dot { width: 34px; height: 34px; border-radius: 50%; background: #eef4f8; color: var(--muted); display: grid; place-items: center; margin: 0 auto 6px; font-family: 'Poppins',sans-serif; font-weight: 700; font-size: .9rem; transition: .3s; }
+.steps .step.active .dot { background: var(--grad); color: #fff; box-shadow: 0 8px 18px rgba(14,165,233,.3); }
+.steps .step.done .dot { background: #10b981; color: #fff; }
+.steps .step small { font-size: .74rem; color: var(--muted); font-weight: 500; }
+.steps .step.active small { color: var(--navy); }
+.steps .line { height: 2px; flex: 0 0 24px; background: #e6edf3; margin-bottom: 22px; }
+
+.wstep { display: none; animation: fade .4s var(--ease); }
+.wstep.active { display: block; }
+
+/* plan / pricing card en checkout */
+.plan-box { border: 2px solid var(--teal); border-radius: 16px; padding: 20px; background: #f0fdfa; margin-bottom: 20px; }
+.plan-box .pb-top { display: flex; justify-content: space-between; align-items: baseline; }
+.plan-box h4 { font-size: 1.1rem; }
+.plan-box .price { font-family: 'Poppins',sans-serif; font-weight: 800; font-size: 1.9rem; color: var(--navy); }
+.plan-box .price small { font-size: .9rem; font-weight: 500; color: var(--muted); }
+.plan-box ul { margin-top: 14px; display: grid; gap: 8px; }
+.plan-box li { display: flex; gap: 8px; align-items: center; font-size: .88rem; color: var(--ink); }
+.plan-box li svg { width: 17px; height: 17px; stroke: var(--teal-600); flex: none; }
+
+.card-visual { background: linear-gradient(135deg,#0f2a43,#0e7490); border-radius: 16px; padding: 20px; color: #fff; margin-bottom: 18px; position: relative; overflow: hidden; box-shadow: var(--shadow-md); }
+.card-visual::after { content: ""; position: absolute; right: -30px; top: -30px; width: 130px; height: 130px; background: rgba(255,255,255,.1); border-radius: 50%; }
+.card-visual .cv-chip { width: 40px; height: 30px; border-radius: 6px; background: linear-gradient(135deg,#fde68a,#f59e0b); margin-bottom: 18px; }
+.card-visual .cv-num { font-family: 'Poppins',sans-serif; font-size: 1.25rem; letter-spacing: 2px; }
+.card-visual .cv-row { display: flex; justify-content: space-between; margin-top: 14px; font-size: .8rem; color: #cbd5e1; }
+
+.pay-success { text-align: center; padding: 10px 0; }
+.pay-success .check { width: 80px; height: 80px; border-radius: 50%; background: #ecfdf5; display: grid; place-items: center; margin: 0 auto 18px; animation: pop .5s var(--ease); }
+.pay-success .check svg { width: 42px; height: 42px; stroke: #10b981; }
+.pay-success h2 { margin-bottom: 8px; }
+.pay-success p { color: var(--muted); margin-bottom: 6px; }
+
+.wbtns { display: flex; gap: 12px; margin-top: 22px; }
+.field-half { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.muted-link { color: var(--muted); font-size: .9rem; text-align: center; margin-top: 18px; }
+.muted-link a { color: var(--teal-600); font-weight: 600; }
+.processing { display: inline-block; width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
 /* responsive */
 @media (max-width: 980px) {
   .login-wrap { grid-template-columns: 1fr; }
