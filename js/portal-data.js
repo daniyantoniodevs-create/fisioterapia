@@ -31,25 +31,29 @@
   function write(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {} }
 
   /* ---------- Datos por defecto (semilla) ---------- */
+  // NOTA: los vídeos de ejemplo usan clips de muestra públicos y estables para que
+  // SIEMPRE se reproduzcan en la demo. Álvaro los sustituye por los suyos (YouTube o
+  // archivo) desde el panel del fisioterapeuta.
+  var SAMPLE = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/';
   var DEFAULT_VIDEOS = [
     { id: 'v1', title: 'Movilidad de rodilla en flexo-extensión', phase: 1, category: 'Movilidad',
       desc: 'Ejercicio suave para recuperar el rango de movimiento de la rodilla en las primeras semanas.',
-      type: 'youtube', src: 'I3-jUF1bele', duration: '4 min', reps: '3 series x 15 rep', date: '2026-05-10' },
+      type: 'url', src: SAMPLE + 'ForBiggerJoyrides.mp4', demo: true, duration: '4 min', reps: '3 series x 15 rep', date: '2026-05-10' },
     { id: 'v2', title: 'Activación del cuádriceps (isométricos)', phase: 1, category: 'Fuerza',
       desc: 'Contracciones isométricas para reactivar la musculatura del muslo sin cargar la articulación.',
-      type: 'youtube', src: 'pXY-jXcK5Xk', duration: '5 min', reps: '3 series x 10 rep', date: '2026-05-10' },
+      type: 'url', src: SAMPLE + 'ForBiggerBlazes.mp4', demo: true, duration: '5 min', reps: '3 series x 10 rep', date: '2026-05-10' },
     { id: 'v3', title: 'Elevación de pierna recta (SLR)', phase: 2, category: 'Fuerza',
       desc: 'Fortalecimiento del cuádriceps con la rodilla estirada. Clave para la fase de recuperación temprana.',
-      type: 'youtube', src: 'dr-2-3W8nzM', duration: '6 min', reps: '4 series x 12 rep', date: '2026-05-14' },
+      type: 'url', src: SAMPLE + 'ForBiggerEscapes.mp4', demo: true, duration: '6 min', reps: '4 series x 12 rep', date: '2026-05-14' },
     { id: 'v4', title: 'Sentadilla parcial con apoyo', phase: 2, category: 'Fuerza',
       desc: 'Sentadilla controlada en rango corto para ganar fuerza funcional de forma segura.',
-      type: 'youtube', src: 'aclHkVaku9U', duration: '7 min', reps: '3 series x 12 rep', date: '2026-05-18' },
+      type: 'url', src: SAMPLE + 'ForBiggerFun.mp4', demo: true, duration: '7 min', reps: '3 series x 12 rep', date: '2026-05-18' },
     { id: 'v5', title: 'Propiocepción en superficie inestable', phase: 3, category: 'Propiocepción',
       desc: 'Trabajo de equilibrio y estabilidad sobre bosu para reeducar el control neuromuscular.',
-      type: 'youtube', src: 'CGqQ-3rZv3E', duration: '8 min', reps: '4 series x 30 seg', date: '2026-05-22' },
+      type: 'url', src: SAMPLE + 'ForBiggerMeltdowns.mp4', demo: true, duration: '8 min', reps: '4 series x 30 seg', date: '2026-05-22' },
     { id: 'v6', title: 'Pliometría: salto y aterrizaje controlado', phase: 4, category: 'Pliometría',
       desc: 'Ejercicios de salto para preparar la vuelta al deporte. Solo en fases avanzadas y con el visto bueno del fisio.',
-      type: 'youtube', src: 'XxuRBcGOTGw', duration: '9 min', reps: '4 series x 8 rep', date: '2026-05-26' }
+      type: 'url', src: SAMPLE + 'WeAreGoingOnBullrun.mp4', demo: true, duration: '9 min', reps: '4 series x 8 rep', date: '2026-05-26' }
   ];
 
   var DEFAULT_PROGRESS = {
@@ -278,7 +282,7 @@
         var ap = autoplay ? '?autoplay=1&rel=0' : '?rel=0';
         return '<iframe src="https://www.youtube.com/embed/' + v.src + ap + '" title="' + (v.title || '') + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
       }
-      if (v.type === 'file' || v.type === 'url') return '<video src="' + v.src + '" controls ' + (autoplay ? 'autoplay' : '') + ' playsinline></video>';
+      if (v.type === 'file' || v.type === 'url') return '<video src="' + v.src + '" controls ' + (autoplay ? 'autoplay muted' : '') + ' playsinline></video>';
       return '';
     },
     thumbHtml: function (v) {

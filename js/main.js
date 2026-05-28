@@ -152,6 +152,48 @@
     });
   }
 
+  /* ---- Carrusel de casos de éxito ---- */
+  (function () {
+    var track = document.getElementById('casesTrack');
+    if (!track) return;
+    var slides = track.children;
+    var total = slides.length;
+    var dotsWrap = document.getElementById('caseDots');
+    var idx = 0, timer;
+
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.setAttribute('aria-label', 'Caso ' + (i + 1));
+      (function (n) { d.addEventListener('click', function () { go(n); reset(); }); })(i);
+      dotsWrap.appendChild(d);
+    }
+    var dots = dotsWrap.children;
+
+    function go(n) {
+      idx = (n + total) % total;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      for (var k = 0; k < dots.length; k++) dots[k].classList.toggle('active', k === idx);
+    }
+    function next() { go(idx + 1); }
+    function prev() { go(idx - 1); }
+    function reset() { clearInterval(timer); timer = setInterval(next, 6000); }
+
+    document.getElementById('caseNext').addEventListener('click', function () { next(); reset(); });
+    document.getElementById('casePrev').addEventListener('click', function () { prev(); reset(); });
+
+    // swipe táctil
+    var x0 = null;
+    track.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); reset(); }
+      x0 = null;
+    }, { passive: true });
+
+    go(0); reset();
+  })();
+
   /* ---- Año dinámico en el footer ---- */
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
